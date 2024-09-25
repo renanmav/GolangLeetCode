@@ -11,7 +11,7 @@ Custom Judge:
 
 The judge will test your solution with the following code:
 
-```golang
+```
 int[] nums = [...]; // Input array
 int val = ...; // Value to remove
 int[] expectedNums = [...]; // The expected answer with correct length.
