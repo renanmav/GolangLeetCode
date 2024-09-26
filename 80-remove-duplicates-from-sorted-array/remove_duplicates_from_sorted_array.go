@@ -57,12 +57,15 @@ func removeDuplicates(nums []int) int {
 
 	for i := 1; i < len(nums); i++ {
 		if nums[i] == nums[i-1] {
+			// if the current element is the same as the previous one, increment the occurence
 			occurence++
 		} else {
+			// if the current element is not the same as the previous one, reset the occurence
 			occurence = 1
 		}
 
 		if occurence <= 2 {
+			// if the occurence is less than or equal to 2, add the current element to the modified array
 			nums[index] = nums[i]
 			index++
 		}
