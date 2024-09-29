@@ -20,6 +20,10 @@ Constraints:
 s consist of only digits and English letters.
 */
 
+func longestPalindrome(s string) string {
+	return approach3(s)
+}
+
 // Approach 1: Check all substrings
 // Time Complexity: O(n^3)
 // Space Complexity: O(1)
@@ -38,17 +42,6 @@ func approach2(s string) string {
 // Time Complexity: O(n^2)
 // Space Complexity: O(1)
 func approach3(s string) string {
-	panic("not implemented")
-}
-
-// Approach 4: Manacher's Algorithm
-// Time Complexity: O(n)
-// Space Complexity: O(n)
-func approach4(s string) string {
-	panic("not implemented")
-}
-
-func longestPalindrome(s string) string {
 	if len(s) < 2 {
 		return s
 	}
@@ -78,4 +71,11 @@ func max(x, y int) int {
 		return x
 	}
 	return y
+}
+
+// Approach 4: Manacher's Algorithm
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+func approach4(s string) string {
+	panic("not implemented")
 }

@@ -37,3 +37,39 @@ func TestExample2(t *testing.T) {
 	got := longestPalindrome(example2.s)
 	assert.Equal(t, example2.want, got)
 }
+
+func TestExample3(t *testing.T) {
+	example3 := Example{
+		s:    "a",
+		want: "a",
+	}
+	got := longestPalindrome(example3.s)
+	assert.Equal(t, example3.want, got)
+}
+
+func TestExample4(t *testing.T) {
+	example4 := Example{
+		s:    "aa",
+		want: "aa",
+	}
+	got := longestPalindrome(example4.s)
+	assert.Equal(t, example4.want, got)
+}
+
+func TestExample5(t *testing.T) {
+	example5 := Example{
+		s:    "abaxabaxabb",
+		want: "baxabaxab",
+	}
+	got := longestPalindrome(example5.s)
+	assert.Equal(t, example5.want, got)
+}
+
+func TestExample6(t *testing.T) {
+	example6 := Example{
+		s:    "aracecarsuperfast",
+		want: "racecar",
+	}
+	got := longestPalindrome(example6.s)
+	assert.Equal(t, example6.want, got)
+}
