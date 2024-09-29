@@ -20,6 +20,34 @@ Constraints:
 s consist of only digits and English letters.
 */
 
+// Approach 1: Check all substrings
+// Time Complexity: O(n^3)
+// Space Complexity: O(1)
+func approach1(s string) string {
+	panic("not implemented")
+}
+
+// Approach 2: Dynamic Programming
+// Time Complexity: O(n^2)
+// Space Complexity: O(n^2)
+func approach2(s string) string {
+	panic("not implemented")
+}
+
+// Approach 3: Expand From Centers
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
+func approach3(s string) string {
+	panic("not implemented")
+}
+
+// Approach 4: Manacher's Algorithm
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+func approach4(s string) string {
+	panic("not implemented")
+}
+
 func longestPalindrome(s string) string {
 	if len(s) < 2 {
 		return s
