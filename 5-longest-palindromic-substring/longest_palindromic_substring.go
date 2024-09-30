@@ -21,14 +21,35 @@ s consist of only digits and English letters.
 */
 
 func longestPalindrome(s string) string {
-	return approach3(s)
+	return approach1(s)
 }
 
 // Approach 1: Check all substrings
 // Time Complexity: O(n^3)
 // Space Complexity: O(1)
 func approach1(s string) string {
-	panic("not implemented")
+	check := func(i, j int) bool {
+		left := i
+		right := j - 1
+		for left < right {
+			if s[left] != s[right] {
+				return false
+			}
+			left++
+			right--
+		}
+		return true
+	}
+
+	for length := len(s); length > 0; length-- {
+		for start := 0; start <= len(s)-length; start++ {
+			if check(start, start+length) {
+				return s[start : start+length]
+			}
+		}
+	}
+
+	return ""
 }
 
 // Approach 2: Dynamic Programming
