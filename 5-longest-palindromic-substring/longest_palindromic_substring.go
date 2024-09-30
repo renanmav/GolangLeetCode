@@ -21,17 +21,17 @@ s consist of only digits and English letters.
 */
 
 func longestPalindrome(s string) string {
-	return approach1(s)
+	return approach2(s)
 }
 
 // Approach 1: Check all substrings
 // Time Complexity: O(n^3)
 // Space Complexity: O(1)
-func approach1(s string) string {
+func approach1(s string) string { // O(n^3)
 	check := func(i, j int) bool {
 		left := i
 		right := j - 1
-		for left < right {
+		for left < right { // O(n)
 			if s[left] != s[right] {
 				return false
 			}
@@ -41,8 +41,8 @@ func approach1(s string) string {
 		return true
 	}
 
-	for length := len(s); length > 0; length-- {
-		for start := 0; start <= len(s)-length; start++ {
+	for length := len(s); length > 0; length-- { // O(n)
+		for start := 0; start <= len(s)-length; start++ { // O(n)
 			if check(start, start+length) {
 				return s[start : start+length]
 			}
@@ -56,7 +56,50 @@ func approach1(s string) string {
 // Time Complexity: O(n^2)
 // Space Complexity: O(n^2)
 func approach2(s string) string {
-	panic("not implemented")
+	n := len(s)
+	if n == 0 {
+		return ""
+	}
+
+	// Create a dp table to store whether s[i:j+1] is a palindrome
+	dp := make([][]bool, n)
+	for i := range dp {
+		dp[i] = make([]bool, n)
+	}
+
+	start, maxLength := 0, 1
+
+	// All substrings of length 1 are palindromes
+	for i := 0; i < n; i++ {
+		dp[i][i] = true
+	}
+
+	// Check for substrings of length 2
+	for i := 0; i < n-1; i++ {
+		if s[i] == s[i+1] {
+			dp[i][i+1] = true
+			start = i
+			maxLength = 2
+		}
+	}
+
+	// Check for substrings of length greater then 2
+	for length := 3; length <= n; length++ {
+		for i := 0; i < n-length+1; i++ {
+			j := i + length - 1
+
+			// If s[i] == s[j] and dp[i+1][j-1] is true, then s[i:j+1] is a palindrome
+			if s[i] == s[j] && dp[i+1][j-1] {
+				dp[i][j] = true
+				if length > maxLength {
+					start = i
+					maxLength = length
+				}
+			}
+		}
+	}
+
+	return s[start : start+maxLength]
 }
 
 // Approach 3: Expand From Centers
